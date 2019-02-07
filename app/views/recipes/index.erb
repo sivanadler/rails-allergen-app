@@ -1,0 +1,18 @@
+<h1>All Da Recipes:</h1>
+
+<%= form_tag(recipes_path, method: "get") do %>
+<label>Sort by:</label>
+<select name="sort_by">
+  <option value="0">Greatest to Least</option>
+  <option value="1">Least to Greatest</option>
+</select>
+  <%= submit_tag("Submit") %>
+<% end %>
+
+
+  <% @recipes.each do |recipe| %>
+    <ul>
+      <li> <%=link_to recipe.name, recipe_path(recipe) %>  </li>
+      <li>Number of Ingredients: <%= recipe.ingredients.count %></li>
+    </ul>
+  <% end %>
